@@ -16,4 +16,11 @@ public class DocumentController {
                                  .body("Failed to upload document: " + e.getMessage());
         }
     }
+
+    @PostMapping("/search")
+public ResponseEntity<?> searchDocuments(@RequestBody DocumentSearchRequest request) {
+    Page<Document> result = documentService.searchDocuments(request);
+    return ResponseEntity.ok(result);
+}
+
 }
